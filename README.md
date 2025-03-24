@@ -1,29 +1,25 @@
-## agents.py
-This file contains the definition of custom agents.
-To create a Agent, you need to define the following:
-1. Role: The role of the agent.
-2. Backstory: The backstory of the agent.
-3. Goal: The goal of the agent.
-4. Tools: The tools that the agent has access to (optional).
-5. Allow Delegation: Whether the agent can delegate tasks to other agents(optional).
+# 🧳 Trip Planner AI Agent  
 
-    [More Details about Agent](https://docs.crewai.com/concepts/agents).
+An AI-powered travel assistant that helps you plan personalized trips, find the best deals, and optimize your itinerary using **LangChain**, **Google Gemini AI**, and **Streamlit**.
 
-## task.py
-This file contains the definition of custom tasks.
-To Create a task, you need to define the following :
-1. description: A string that describes the task.
-2. agent: An agent object that will be assigned to the task.
-3. expected_output: The expected output of the task.
+## 🚀 Features  
+✅ AI-powered itinerary generation  
+✅ Hotel, flight, and activity recommendations  
+✅ Real-time updates & budget optimization  
+✅ Supports multi-city trip planning  
+✅ Interactive UI with **Streamlit**  
 
-    [More Details about Task](https://docs.crewai.com/concepts/tasks).
+## 🛠 Tech Stack  
+- **Python 3.11**  
+- **LangChain**  
+- **Google Gemini AI** (Generative AI)  
+- **Streamlit** (for UI)  
+- **gRPC** (for API communication)  
+- **Pydantic** (Data validation)  
 
-## crew (main.py)
-This is the main file that you will use to run your custom crew.
-To create a Crew , you need to define Agent ,Task and following Parameters:
-1. Agent: List of agents that you want to include in the crew.
-2. Task: List of tasks that you want to include in the crew.
-3. verbose: If True, print the output of each task.(default is False).
-4. debug: If True, print the debug logs.(default is False).
+## 🔧 Setup Instructions  
 
-    [More Details about Crew](https://docs.crewai.com/concepts/crew).
+### 1️⃣ Clone the Repository  
+```bash
+git clone https://github.com/yourusername/trip-planner-ai.git
+cd trip-planner-ai

@@ -5,7 +5,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from tools.search_tools import SearchTools
 from tools.calculator_tools import  CalculatorTools
 import os
-
+from dotenv import load_dotenv
+load_dotenv()
 """
 Creating Agents Cheat Sheet:
 - Think like a boss. Work backwards from the goal and think which employee 
@@ -37,14 +38,15 @@ Notes:
 class TravelAgents:
     def __init__(self):
         self.Gemini = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash", 
+            model="gemini-2.0-flash",
+            google_api_key="AIzaSyCo2qRY4c6quScOFUNeUbXSZIFtK57cmJM", 
             temperature=0.7,
             client_options=None,
             transport=None,
             additional_headers=None,
             client=None,
             async_client=None,
-            
+              
         )
 
 
@@ -53,10 +55,13 @@ class TravelAgents:
             role="Expert Travel Agent",
             backstory=dedent(
                 f"""Expert in travel planning and logistics. 
-                I have decades of expereince making travel iteneraries."""),
+                I have decades of expereince making travel iteneraries.
+                I create wonderful 7 day plans for my clients.
+                And try to organise all my finding tin those 7 days action plan."""),
             goal=dedent(f"""
                         Create a 7-day travel itinerary with detailed per-day plans,
-                        include budget, packing suggestions, and safety tips."""),
+                        include budget, packing suggestions, and safety tips.
+                        This 7 Day plan will be final."""),
             tools=[
                 SearchTools.search_internet,
                 CalculatorTools.calculate
