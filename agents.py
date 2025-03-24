@@ -1,9 +1,10 @@
 from crewai import Agent
 from textwrap import dedent
 from langchain_openai import ChatOpenAI
-
+from langchain_google_genai import ChatGoogleGenerativeAI
 from tools.search_tools import SearchTools
 from tools.calculator_tools import  CalculatorTools
+import os
 
 """
 Creating Agents Cheat Sheet:
@@ -35,9 +36,17 @@ Notes:
 
 class TravelAgents:
     def __init__(self):
-        self.OpenAIGPT35 = ChatOpenAI(
-            model="gpt-3.5-turbo", temperature=0.7)
-        self.OpenAIGPT4 = ChatOpenAI(model="gpt-4", temperature=0.7)
+        self.Gemini = ChatGoogleGenerativeAI(
+            model="gemini-1.5-flash", 
+            temperature=0.7,
+            client_options=None,
+            transport=None,
+            additional_headers=None,
+            client=None,
+            async_client=None,
+            
+        )
+
 
     def expert_travel_agent(self):
         return Agent(
@@ -47,14 +56,13 @@ class TravelAgents:
                 I have decades of expereince making travel iteneraries."""),
             goal=dedent(f"""
                         Create a 7-day travel itinerary with detailed per-day plans,
-                        include budget, packing suggestions, and safety tips.
-                        """),
+                        include budget, packing suggestions, and safety tips."""),
             tools=[
                 SearchTools.search_internet,
                 CalculatorTools.calculate
             ],
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.Gemini,
         )
 
     def city_selection_expert(self):
@@ -66,7 +74,7 @@ class TravelAgents:
                 f"""Select the best cities based on weather, season, prices, and traveler interests"""),
             tools=[SearchTools.search_internet],
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.Gemini,
         )
 
     def local_tour_guide(self):
@@ -78,5 +86,5 @@ class TravelAgents:
                 f"""Provide the BEST insights about the selected city"""),
             tools=[SearchTools.search_internet],
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.Gemini,
         )
