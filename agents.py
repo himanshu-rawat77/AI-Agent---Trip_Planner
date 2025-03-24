@@ -39,7 +39,7 @@ class TravelAgents:
     def __init__(self):
         self.Gemini = ChatGoogleGenerativeAI(
             model="gemini-2.0-flash",
-            google_api_key="AIzaSyCo2qRY4c6quScOFUNeUbXSZIFtK57cmJM", 
+            google_api_key=os.getenv(GOOGLE_API_KEY), 
             temperature=0.7,
             client_options=None,
             transport=None,
