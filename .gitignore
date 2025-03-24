@@ -1,0 +1,8 @@
+#ignore this in github
+poetry.lock
+
+# environment variables
+.env
+
+#Cache folders
+__pycache__/
